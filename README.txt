@@ -6,7 +6,7 @@ https://github.com/away3d/away3d-core-fp11
 These are some demos for a quick view:
 http://liaocheng.github.com/particles_system_examples/index.html
 
-These is a GUI editor to help you quick create awesome effect:
+These is a GUI editor to help you quickly create awesome effect:
 http://liaocheng.github.com/particles_editor.html
 
 A performance Benchmark:
