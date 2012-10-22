@@ -41,13 +41,14 @@ package a3dparticle.animators.actions.acceleration
 			else
 			{
 				if (!param[_name]) throw(Error("there is no " + _name + " in param!"));
-				_tempAcc = param[_name];
+				_tempAcc = param[_name].clone();
 			}
+			_tempAcc.scaleBy(0.5);
 		}
 		
 		override public function distributeOne(index:int, verticeIndex:uint, subContainer:SubContainer):void
 		{
-			getExtraData(subContainer).push(_tempAcc.x, _tempAcc.y, _tempAcc.z);
+			getExtraData(subContainer).push(_tempAcc.x , _tempAcc.y , _tempAcc.z );
 		}
 		
 		override public function getAGALVertexCode(pass : MaterialPassBase) : String
