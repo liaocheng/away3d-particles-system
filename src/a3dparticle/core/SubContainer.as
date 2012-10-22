@@ -291,7 +291,7 @@ class cloneShareAtt
 		{
 			t = _uvBuffer[contextIndex] = context.createVertexBuffer(_uvData.length / 2, 2);
 			t.uploadFromVector(_uvData, 0, _uvData.length / 2);
-			_uvContex3D[contextIndex] != context;
+			_uvContex3D[contextIndex] = context;
 		}
 		return t;
 	}
