@@ -118,10 +118,12 @@ package a3dparticle.animators.actions
 		override public function getAGALVertexCode(pass : MaterialPassBase) : String
 		{
 			timeAtt = shaderRegisterCache.getFreeVertexAttribute();//timeAtt.x is start，timeAtt.y is during time
-			
+			var temp:ShaderRegisterElement = shaderRegisterCache.getFreeVertexSingleTemp();
 			var code:String = "";
 			code += "sub " + _animation.vertexTime.toString() + "," + _animation.timeConst.toString() + ".x," + timeAtt.toString() + ".x\n";
-			code += "max " + _animation.vertexTime.toString() + "," + _animation.vertexZeroConst.toString() + "," +  _animation.vertexTime.toString() + "\n";
+			//if time=0,set the position to zero.
+			code += "sge " + temp.toString() + "," + _animation.vertexTime.toString() + "," + _animation.vertexZeroConst.toString() + "\n";
+			code += "mul " + _animation.scaleAndRotateTarget.toString() + "," + _animation.scaleAndRotateTarget.toString() + "," + temp.toString() + "\n";
 			if (hasDuringTime)
 			{
 				if (_loop)
@@ -133,7 +135,7 @@ package a3dparticle.animators.actions
 						code += "frc " + div.toString() + ".x," + div.toString() + ".x\n";
 						code += "mul " + _animation.vertexTime.toString() + "," +div.toString() + ".x," + timeAtt.toString() + ".z\n";
 						code += "slt " + div.toString() + ".x," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".y\n";
-						code += "mul " + _animation.vertexTime.toString() + "," + _animation.vertexTime.toString() + "," + div.toString() + ".x\n";
+						code += "mul " + _animation.scaleAndRotateTarget.toString() + "," + _animation.scaleAndRotateTarget.toString() + "," + div.toString() + ".x\n";
 					}
 					else
 					{
