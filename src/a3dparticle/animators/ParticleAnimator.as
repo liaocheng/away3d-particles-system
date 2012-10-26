@@ -65,7 +65,7 @@ package a3dparticle.animators
 		
 		override protected function updateDeltaTime(dt : Number) : void
 		{
-			_animatorTime += dt / 1000;
+			animatorTime += dt / 1000;
 		}
 		
 		public function testGPUCompatibility(pass : MaterialPassBase) : void

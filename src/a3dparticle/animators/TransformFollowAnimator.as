@@ -119,9 +119,9 @@ package a3dparticle.animators
 			
 			for (var i:uint = 0; i < data.length; i++)
 			{
-				var k:Number = (_absoluteTime / 1000 - data[i].startTime) / data[i].lifeTime;
+				var k:Number = (animatorTime - data[i].startTime) / data[i].lifeTime;
 				var t:Number = (k - Math.floor(k)) * data[i].lifeTime;
-				if ( _followTarget && t - (_absoluteTime-_lastTime)/1000 <= 0)
+				if ( _followTarget && t - (animatorTime-_lastTime) <= 0)
 				{
 					var inc:int = data[i].start * 3;
 					
@@ -164,9 +164,9 @@ package a3dparticle.animators
 			
 			for (var i:uint = 0; i < data.length; i++)
 			{
-				var k:Number = (_absoluteTime/1000-data[i].startTime) / data[i].lifeTime;
+				var k:Number = (animatorTime-data[i].startTime) / data[i].lifeTime;
 				var t:Number = (k - Math.floor(k)) * data[i].lifeTime;
-				if ( _followTarget && t - (_absoluteTime-_lastTime)/1000 <= 0)
+				if ( _followTarget && t - (animatorTime-_lastTime) <= 0)
 				{
 					var inc:int = data[i].start * 3;
 					
@@ -211,9 +211,9 @@ package a3dparticle.animators
 			
 			for (var i:uint = 0; i < data.length; i++)
 			{
-				var k:Number = (_absoluteTime / 1000 - data[i].startTime) / data[i].lifeTime;
+				var k:Number = (animatorTime - data[i].startTime) / data[i].lifeTime;
 				var t:Number = (k - Math.floor(k)) * data[i].lifeTime;
-				if ( _followTarget && t - (_absoluteTime-_lastTime)/1000 <= 0)
+				if ( _followTarget && t - (animatorTime-_lastTime) <= 0)
 				{
 					var inc:int = data[i].start * 6;
 					if (temp[inc] != position.x || temp[inc + 1] != position.y || temp[inc + 2] != position.z ||
