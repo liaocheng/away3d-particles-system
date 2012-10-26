@@ -128,27 +128,27 @@ package a3dparticle.animators.actions
 			{
 				if (_loop)
 				{
-					var div:ShaderRegisterElement = shaderRegisterCache.getFreeVertexVectorTemp();
+					var div:ShaderRegisterElement = shaderRegisterCache.getFreeVertexSingleTemp();
 					if (hasSleepTime)
 					{
-						code += "div " + div.toString() + ".x," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".z\n";
-						code += "frc " + div.toString() + ".x," + div.toString() + ".x\n";
-						code += "mul " + _animation.vertexTime.toString() + "," +div.toString() + ".x," + timeAtt.toString() + ".z\n";
-						code += "slt " + div.toString() + ".x," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".y\n";
-						code += "mul " + _animation.scaleAndRotateTarget.toString() + "," + _animation.scaleAndRotateTarget.toString() + "," + div.toString() + ".x\n";
+						code += "div " + div.toString() + "," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".z\n";
+						code += "frc " + div.toString() + "," + div.toString() + "\n";
+						code += "mul " + _animation.vertexTime.toString() + "," +div.toString() + "," + timeAtt.toString() + ".z\n";
+						code += "slt " + div.toString() + "," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".y\n";
+						code += "mul " + _animation.scaleAndRotateTarget.toString() + "," + _animation.scaleAndRotateTarget.toString() + "," + div.toString() + "\n";
 					}
 					else
 					{
-						code += "mul " + div.toString() + ".x," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".w\n";
-						code += "frc " + div.toString() + ".x," + div.toString() + ".x\n";
-						code += "mul " + _animation.vertexTime.toString() + "," +div.toString() + ".x," + timeAtt.toString() + ".y\n";
+						code += "mul " + div.toString() + "," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".w\n";
+						code += "frc " + div.toString() + "," + div.toString() + "\n";
+						code += "mul " + _animation.vertexTime.toString() + "," +div.toString() + "," + timeAtt.toString() + ".y\n";
 					}
 				}
 				else
 				{
-					var sge:ShaderRegisterElement = shaderRegisterCache.getFreeVertexVectorTemp();
-					code += "sge " + sge.toString() + ".x," +  timeAtt.toString() + ".y," + _animation.vertexTime.toString() + "\n";
-					code += "mul " + _animation.vertexTime.toString() + "," +sge.toString() + ".x," + _animation.vertexTime.toString() + "\n";
+					var sge:ShaderRegisterElement = shaderRegisterCache.getFreeVertexSingleTemp();
+					code += "sge " + sge.toString() + "," +  timeAtt.toString() + ".y," + _animation.vertexTime.toString() + "\n";
+					code += "mul " + _animation.scaleAndRotateTarget.toString() + "," + _animation.scaleAndRotateTarget.toString() + "," + sge.toString() + "\n";
 				}
 			}
 			code += "mul " + _animation.vertexLife.toString() + "," + _animation.vertexTime.toString() + "," + timeAtt.toString() + ".w\n";
