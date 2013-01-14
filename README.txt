@@ -1,3 +1,7 @@
+Update:This library has been integrated into Away3D. So this project is deprecated since Away3D 4.1. If you has any problem about the particle system, report to Away3D repo instead.
+
+
+
 This is a particles system based on Stage3D for Away3D engine.
 It's high performance, powerful and flexible. It's compatible with the latest Away3D engine:
 
